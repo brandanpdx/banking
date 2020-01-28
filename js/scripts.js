@@ -31,7 +31,6 @@ Account.prototype.withdrawFunds = function(withdrawal) {
 }
 
 // User Interface Logic:
-
 function displayBalance(account) {
   $(".current-balance").html(account.amount)
 }
