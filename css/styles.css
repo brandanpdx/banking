@@ -8,7 +8,7 @@ button.btn-info {
   text-align: center;
 }
 
-#withdraw-deposit, #current-balance {
+.withdraw-deposit, #current-balance {
   display: none;
 }
 
