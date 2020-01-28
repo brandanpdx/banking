@@ -5,13 +5,24 @@ function Bank() {
 }
 
 Bank.prototype.addAccount = function(account) {
-  account.id = this.assignId;
+  account.id = this.assignId();
   this.accounts.push(account);
 }
 
 Bank.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
+}
+
+Bank.prototype.findAccount = function(id) {
+  for (var i=0; i< this.accounts.length; i++) {
+    if (this.accounts[i]) {
+      if (this.accounts[i].id == id) {
+        return this.accounts[i];
+      }
+    }
+  };
+  return false;
 }
 
 // Business Logic for Accounts:
@@ -22,17 +33,20 @@ function Account(name, amount) {
 
 Account.prototype.depositFunds = function(deposit) {
   this.amount += deposit;
-  displayBalance(this);
+  displayBalance(this.id);
 }
 
 Account.prototype.withdrawFunds = function(withdrawal) {
   this.amount -= withdrawal;
-  displayBalance(this);
+  displayBalance(this.id);
 }
 
 // User Interface Logic:
-function displayBalance(account) {
-  $(".current-balance").html(account.amount)
+var epicodusBank = new Bank();
+
+function displayBalance(accountId) {
+  var currentAccount = epicodusBank.findAccount(accountId);
+  $(".current-balance").html(currentAccount.amount);
 }
 
 $(document).ready(function() {
@@ -41,11 +55,11 @@ $(document).ready(function() {
     var accountHolder = $("input#account-name").val();
     var initialDeposit = parseInt($("input#initial-amount").val());
 
-    var userAccount = new Account(accountHolder, initialDeposit);
-
     if (!initialDeposit || !accountHolder) {
       alert("Please complete all requried fields to open an account.")
     } else {
+      var userAccount = new Account(accountHolder, initialDeposit);
+      epicodusBank.addAccount(userAccount);
       $("form#initial-deposit").hide();
       $("form.withdraw-deposit").show();
       $("#current-balance").show();
