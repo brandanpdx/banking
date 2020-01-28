@@ -20,31 +20,21 @@ function Account(name, amount) {
   this.amount = amount
 }
 
-// Account.prototype.depositFunds = function(deposit) {
-//   var incrementedBalance = Account.amount + deposit;
-//   return incrementedBalance;
-// }
+Account.prototype.depositFunds = function(deposit) {
+  this.amount += deposit;
+  displayBalance(this);
+}
 
-// Account.prototype.withdrawFunds = function(withdrawal) {
-//   var decrementedBalance = Account.amount - withdrawal;
-//   return decrementedBalance;
-// }
-
-Account.prototype.bankingOperation = function(deposit, withdrawal) {
-  if (isNaN(deposit) && isNaN(withdrawal)) {
-    alert("Please enter an amount(s) to withdraw and/or deposit.");
-  }
-  if (withdrawal) {
-    var total = this.amount - withdrawal;
-    return total;
-  }
-  if (deposit) {
-    total = this.amount + deposit;
-    return total;
-  } 
+Account.prototype.withdrawFunds = function(withdrawal) {
+  this.amount -= withdrawal;
+  displayBalance(this);
 }
 
 // User Interface Logic:
+
+function displayBalance(account) {
+  $(".current-balance").html(account.amount)
+}
 
 $(document).ready(function() {
   $("form#initial-deposit").submit(function(event) {
@@ -62,19 +52,22 @@ $(document).ready(function() {
       $("#current-balance").show();
       $(".current-balance").html(userAccount.amount);
 
-      $("button#withdraw-deposit").click(function(event) {
+      $("form.withdraw-deposit").submit(function(event) {
         event.preventDefault();
         var depositAmount = parseInt($("input#deposit").val());
         var withdrawAmount = parseInt($("input#withdrawal").val());
         $("input#deposit").val("");
         $("input#withdrawal").val("");
 
-        var newBalance = userAccount.bankingOperation(depositAmount, withdrawAmount);
-
-        console.log(withdrawAmount);
-        console.log(depositAmount);
-        console.log(newBalance);
-        $(".current-balance").html(newBalance);
+        if (isNaN(depositAmount) && isNaN(withdrawAmount)) {
+          alert("Please enter an amount(s) to withdraw and/or deposit.");
+        }
+        if (withdrawAmount) {
+          userAccount.withdrawFunds(withdrawAmount);
+        }
+        if (depositAmount) {
+          userAccount.depositFunds(depositAmount);
+        }
       });
     };
   });
