@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <script src="js/jquery-3.4.1.js"></script>
+  <script src="js/scripts.js"></script>
+  <title>Bank Account</title>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Epicodus Credit Union</h1>
+      <h3>The best code bank in town!</h3>
+    </div>
+
+    <form id="initial-deposit" class="well">
+      <label for="account-name">Name:</label>
+      <input type="text" class="form-control" id="account-name">
+      <label for="initial-amount">Initial Deposit:</label>
+      <input type="text" class="form-control" id="initial-amount">
+      <button type="submit" class="btn-info">Open my account!</button>
+    </form>
+
+    <form id="withdraw-deposit" class="well">
+      <label for="deposit">Amount to Deposit:</label>
+      <input type="text" class="form-control" id="deposit">
+      <label for="withdrawal">Amount to Withdraw:</label>
+      <input type="text" class="form-control" id="withdrawal">
+      <button type="submit" class="btn-info">Submit</button>
+    </form>
+
+    <div id="current-balance">
+      <div class="well">
+        <h1>Current Balance:</h1>
+        <h3>$<span class="current-balance"></span></h3>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
