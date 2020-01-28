@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
   <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
   <script src="js/jquery-3.4.1.js"></script>
   <script src="js/scripts.js"></script>
   <title>Bank Account</title>
@@ -14,20 +15,24 @@
       <h3>The best code bank in town!</h3>
     </div>
 
-    <form id="initial-deposit" class="well">
-      <label for="account-name">Name:</label>
-      <input type="text" class="form-control" id="account-name">
-      <label for="initial-amount">Initial Deposit:</label>
-      <input type="text" class="form-control" id="initial-amount">
-      <button type="submit" class="btn-info">Open my account!</button>
+    <form id="initial-deposit">
+      <div class="well">
+        <label for="account-name">Name:</label>
+        <input type="text" class="form-control" id="account-name">
+        <label for="initial-amount">Initial Deposit:</label>
+        <input type="text" class="form-control" id="initial-amount">
+        <button type="submit" class="btn-info">Open my account!</button>
+      </div>
     </form>
 
-    <form class="withdraw-deposit" class="well">
-      <label for="deposit">Amount to Deposit:</label>
-      <input type="text" class="form-control" id="deposit">
-      <label for="withdrawal">Amount to Withdraw:</label>
-      <input type="text" class="form-control" id="withdrawal">
-      <button id="withdraw-deposit" type="submit" class="btn-info">Submit</button>
+    <form class="withdraw-deposit">
+      <div class="well">
+        <label for="deposit">Amount to Deposit:</label>
+        <input type="text" class="form-control" id="deposit">
+        <label for="withdrawal">Amount to Withdraw:</label>
+        <input type="text" class="form-control" id="withdrawal">
+        <button id="withdraw-deposit" type="submit" class="btn-info">Submit</button>
+      </div>
     </form>
 
     <div id="current-balance">
@@ -37,6 +42,18 @@
       </div>
     </div>
 
+    <div id="footer">
+      <div class="well">
+        <p>We provide links to external websites for convenience. Epicodus Credit Union does not endorse and is not responsible for their content, links, privacy, or securities policies.</p>
+        <p>Important notice regarding use of cookies: By continuing to use this site, you agree to our use of cookies as described in our Digital Privacy and Cookies Policy.</p>
+        <p>Investment products and services are offered through Epicodus Credit Union Advisors. Epicodus Credit Union  Advisors is a trade name used by Epicodus Clearing Services LLC (ECS) and Epicodus Credit Union Advisors Financial Network, LLC, Members SIPC, separate registered broker-dealers and non-bank affiliates of Epicodus Credit Union & Company.</p>
+      </div>
+    </div>
   </div>
 </body>
 </html>
+
+
+
+
+
